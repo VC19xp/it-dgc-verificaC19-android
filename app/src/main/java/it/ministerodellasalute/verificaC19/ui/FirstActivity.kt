@@ -217,14 +217,6 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener,
         startSyncData()
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (VerificaApplication.dataResetted) {
-            Toast.makeText(this, "Dati inizializzati.", Toast.LENGTH_SHORT).show()
-            VerificaApplication.dataResetted = false
-        }
-    }
-
     private fun createCheckConnectionAlertDialog() {
         val builder = AlertDialog.Builder(this)
         var dialog: AlertDialog? = null
@@ -335,6 +327,10 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener,
 
     override fun onResume() {
         super.onResume()
+        if (VerificaApplication.dataResetted) {
+            Toast.makeText(this, "Dati inizializzati.", Toast.LENGTH_SHORT).show()
+            VerificaApplication.dataResetted = false
+        }
         viewModel.getAppMinVersion().let {
             if (Utility.versionCompare(
                     it,
