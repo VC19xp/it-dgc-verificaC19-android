@@ -9,6 +9,7 @@
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <application
+        tools:replace="android:name"
         android:name=".VerificaApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -16,15 +17,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:name">
         <activity
             android:name=".ui.DataActivity"
             android:exported="true" />
         <activity
             android:name=".ui.SettingsActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".ui.SplashScreenActivity"
             android:configChanges="orientation|keyboardHidden"
