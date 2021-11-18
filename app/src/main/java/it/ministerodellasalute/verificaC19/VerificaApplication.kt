@@ -69,4 +69,12 @@ class VerificaApplication : Application(), Configuration.Provider {
         var dataResetted = false
     }
 
+    fun startAppMaintenanceWorker(now: Boolean) {
+
+        if (now) {
+            setWorkManager()
+        }
+
+    }
+
 }
