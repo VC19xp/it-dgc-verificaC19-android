@@ -32,12 +32,15 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
+import android.text.method.LinkMovementMethod
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
+import android.text.util.Linkify
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -503,11 +506,15 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener,
     private fun createNoScanModeChosenAlert() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.noKeyAlertTitle))
-        builder.setMessage(getString(R.string.label_no_scan_mode_chosen))
+        builder.setMessage(SpannableString(getString(R.string.label_no_scan_mode_chosen)).also {
+            Linkify.addLinks(it, Linkify.ALL)
+        })
         builder.setPositiveButton(getString(R.string.ok)) { _, _ ->
         }
         val dialog = builder.create()
         dialog.show()
+        val alertMessage = dialog.findViewById<TextView>(android.R.id.message) as TextView
+        alertMessage.movementMethod = LinkMovementMethod.getInstance()
     }
 
     private fun createNoSyncAlertDialog(alertMessage: String) {
