@@ -396,9 +396,9 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener,
 
     override fun onResume() {
         super.onResume()
-        if (VerificaApplication.dataResetted) {
+        if (WhiteLabelApplication.dataResetted) {
             Toast.makeText(this, "Dati inizializzati.", Toast.LENGTH_SHORT).show()
-            VerificaApplication.dataResetted = false
+            WhiteLabelApplication.dataResetted = false
         }
         if (!shared.getBoolean("scan_mode_flag", false)) {
             val s = SpannableStringBuilder()
