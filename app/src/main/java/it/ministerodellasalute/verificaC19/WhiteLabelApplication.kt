@@ -72,17 +72,4 @@ class WhiteLabelApplication : Application(), Configuration.Provider {
                 uploadWorkRequest as PeriodicWorkRequest
             )
     }
-
-    companion object {
-        var dataResetted = false
-    }
-
-    fun startAppMaintenanceWorker(now: Boolean) {
-
-        if (now) {
-            setWorkManager()
-        }
-
-    }
-
 }

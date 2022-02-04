@@ -39,7 +39,6 @@ import android.text.util.Linkify
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -398,33 +397,6 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener,
 
     override fun onResume() {
         super.onResume()
-        if (WhiteLabelApplication.dataResetted) {
-            Toast.makeText(this, "Dati inizializzati.", Toast.LENGTH_SHORT).show()
-            WhiteLabelApplication.dataResetted = false
-        }
-        if (!shared.getBoolean("scan_mode_flag", false)) {
-            val s = SpannableStringBuilder()
-                .bold { append(getString(R.string.label_choose_scan_mode)) }
-            binding.scanModeButton.text = s
-        } else {
-            var chosenScanMode =
-                if (shared.getString(
-                        "scan_mode",
-                        "3G"
-                    ) == "3G"
-                ) getString(R.string.scan_mode_3G_header) else getString(R.string.scan_mode_2G_header)
-            chosenScanMode += "\n"
-            val chosenScanModeText =
-                if (shared.getString(
-                        "scan_mode",
-                        "3G"
-                    ) == "3G"
-                ) getString(R.string.scan_mode_3G) else getString(R.string.scan_mode_2G)
-            val s = SpannableStringBuilder()
-                .bold { append(chosenScanMode) }
-                .append(chosenScanModeText)
-            binding.scanModeButton.text = s
-        }
         setScanModeButtonText(viewModel.getScanMode()!!)
         checkAppMinimumVersion()
     }
