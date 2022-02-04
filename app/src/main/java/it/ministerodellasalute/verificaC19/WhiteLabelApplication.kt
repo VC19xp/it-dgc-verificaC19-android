@@ -72,4 +72,14 @@ class WhiteLabelApplication : Application(), Configuration.Provider {
                 uploadWorkRequest as PeriodicWorkRequest
             )
     }
+
+    fun startAppMaintenanceWorker(now: Boolean) {
+
+        if (now) {
+            setWorkManager()
+        }
+
+    }
+
+
 }
