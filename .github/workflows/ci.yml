@@ -3,6 +3,7 @@ on:
   push:
     branches:
     - main
+    - develop-networkmanager
   pull_request:
     types:
     - opened
@@ -11,8 +12,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    env:
-      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+#    env:
+#      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     steps:
     - uses: actions/checkout@v2
       with:
@@ -21,8 +22,8 @@ jobs:
         path: dgca-app-core-android
     - uses: actions/checkout@v2
       with:
-        repository: ministero-salute/it-dgc-verificac19-sdk-android
-        ref: develop
+        repository: VC19xp/it-dgc-verificac19-sdk-android-XP
+        ref: develop-networkmanager
         path: it-dgc-verificac19-sdk-android 
     - uses: actions/checkout@v2
       with:
